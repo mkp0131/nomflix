@@ -9,12 +9,12 @@ import Home from "Routes/Home";
 import Detail from "Routes/Detail";
 import Search from "Routes/Search";
 import TV from "Routes/TV";
-import Navigation from 'Components/Navigation';
+import Header from 'Components/Header';
 
-export default () => {
+const fn = () => {
 	return (
 		<Router>
-			<Navigation />
+			<Header />
 			<Switch>
 				<Route exact path="/">
 					<Home />
@@ -33,3 +33,5 @@ export default () => {
 		</Router>
 	)
 }
+
+export default fn;
