@@ -7,8 +7,14 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   body {
-    background: #888;
-  }
+		background: #111;
+		padding-top: 65px;
+		color: #fff;
+	}
+	a {
+		display: block;
+		text-decoration: none;
+	}
 `
 
 

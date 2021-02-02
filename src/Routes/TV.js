@@ -1,1 +1,3 @@
-export default () => "TV";
+const fn = () => "Tv";
+
+export default fn;

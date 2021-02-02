@@ -1,1 +1,3 @@
-export default () => "Detail";
+const fn = () => "Detail";
+
+export default fn;
