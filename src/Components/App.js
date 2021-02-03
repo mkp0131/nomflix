@@ -1,7 +1,9 @@
 import Router from "Components/Router";
 import GlobalStyle from "./GlobalStyle";
+import { tvApi } from "./api";
 
-function App() {
+
+function App() {	
   return (
 		<>
 			<Router />
