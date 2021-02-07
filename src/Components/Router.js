@@ -19,7 +19,10 @@ const fn = () => {
 				<Route exact path="/">
 					<Home />
 				</Route>
-				<Route path="/detail">
+				<Route path="/movie/:id">
+					<Detail />
+				</Route>
+				<Route path="/tv/:id">
 					<Detail />
 				</Route>
 				<Route path="/search">
