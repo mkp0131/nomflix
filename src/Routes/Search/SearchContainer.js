@@ -4,7 +4,7 @@ import { tvApi, moviesApi } from "Components/api";
 
 class SearchContainer extends React.Component {
   state = {
-    searchTerm: 'code',
+    searchTerm: '',
     tvResults: null,
     movieResults: null,
     error: null,

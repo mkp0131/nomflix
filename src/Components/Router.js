@@ -16,21 +16,11 @@ const fn = () => {
 		<Router>
 			<Header />
 			<Switch>
-				<Route exact path="/">
-					<Home />
-				</Route>
-				<Route path="/movie/:id">
-					<Detail />
-				</Route>
-				<Route path="/tv/:id">
-					<Detail />
-				</Route>
-				<Route path="/search">
-					<Search />
-				</Route>
-				<Route path="/tv">
-					<TV />
-				</Route>
+				<Route exact path="/" component={Home} />
+				<Route path="/movie/:id" component={Detail} />
+				<Route path="/tv/:id" component={Detail} />
+				<Route path="/search" component={Search} />
+				<Route path="/tv" component={TV} />
 				<Redirect from="*" to="/" />
 			</Switch>
 		</Router>

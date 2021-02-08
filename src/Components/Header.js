@@ -43,7 +43,6 @@ const fn = withRouter(({location: {pathname}}) => {
     <Header>
       <List>
         <Item current={pathname === '/' ? 1 : 0}><SLink to="/">Home</SLink></Item>
-        <Item current={pathname === '/detail' ? 1 : 0}><SLink to="/detail">Detail</SLink></Item>
         <Item current={pathname === '/search' ? 1 : 0}><SLink to="/search">Search</SLink></Item>
         <Item current={pathname === '/tv' ? 1 : 0}><SLink to="/tv">TV</SLink></Item>
       </List>
