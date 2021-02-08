@@ -14,16 +14,16 @@ class HomeContainer extends React.Component {
   async componentDidMount() {
     try {
       const {data: {results: nowPlaying}} = await moviesApi.nowPlaying();
-      const {data: {results: upComing}} = await moviesApi.upComing();
+      const {data: {results: upcoming}} = await moviesApi.upcoming();
       const {data: {results: popular}} = await moviesApi.popular();
 console.log('==== movie api ===');
 console.log('nowPlaying', nowPlaying);
-console.log('upComing', upComing);
+console.log('upComing', upcoming);
 console.log('popular', popular);
 console.log('==== movie api ===');
       this.setState({
         nowPlaying,
-        upComing,
+        upcoming,
         popular,
       });
     } catch (error) {

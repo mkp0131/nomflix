@@ -32,7 +32,7 @@ export const tvApi = {
 
 export const moviesApi = {
 	nowPlaying: () => api.get('movie/now_playing'),
-	upComing: () => api.get('movie/upcoming'),
+	upcoming: () => api.get('movie/upcoming'),
 	popular: () => api.get('movie/popular'),
 	detail: (movie_id) => api.get(
 		`movie/${movie_id}`,
