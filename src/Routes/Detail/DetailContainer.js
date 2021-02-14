@@ -54,6 +54,8 @@ class DetailContainer extends React.Component {
 		}
 	}
 
+
+
   render() {
     return (
       <DetailPresenter {...this.state}/>

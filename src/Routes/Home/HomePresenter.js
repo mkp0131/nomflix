@@ -6,7 +6,6 @@ import Loader from 'Components/Loader';
 
 const Container = styled.section`
   padding: 10px;
-  background: blue;
 `
 
 
@@ -22,17 +21,17 @@ class HomePresenter extends React.Component {
         <Container>
           {nowPlaying && nowPlaying.length > 0 && (
             <Section title="Now Playing" >
-              {nowPlaying.map(item => item.title)}
+              {nowPlaying.map(item => <div key={item.id}>{item.title}</div>)}
             </Section>
           )}
           {upcoming && upcoming.length > 0 && (
-            <Section title="Upcoming" >
-              {upcoming.map(item => item.title)}
+            <Section title="Upcoming Movies" >
+              {upcoming.map(item => <div key={item.id}>{item.title}</div>)}
             </Section>
           )}
           {popular && popular.length > 0 && (
-            <Section title="Now Playing" >
-              {popular.map(item => item.title)}
+            <Section title="Popular Movies" >
+              {popular.map(item => <div key={item.id}>{item.title}</div>)}
             </Section>
           )}
         </Container>

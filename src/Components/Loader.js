@@ -7,9 +7,8 @@ const Container = styled.section`
   position: relative;
 `
 const Spin = styled.div`
-  width: 50px;
-  height: 50px;
-  background: red;
+  width: auto;
+  height: auto;
   position: absolute;
   left: 50%;
   top: 40%;
@@ -21,8 +20,11 @@ class Loader extends React.Component {
   render () {
     return (
       <Container>
-        <Spin aria-label="Loading" >
-         🍟
+        <Spin role="img" aria-label="Loading" >
+          <div className="sk-double-bounce">
+            <div className="sk-child sk-double-bounce1"></div>
+            <div className="sk-child sk-double-bounce2"></div>
+          </div>
         </Spin>
       </Container>
     )

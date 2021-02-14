@@ -3,13 +3,14 @@ import styled from 'styled-components'
 
 
 const Container = styled.div`
-  background: green;
+  margin-bottom: 50px;
 `
 
 const Title = styled.div`
   font-weight: 900;
   font-size: 22px;
   color: red;
+  margin-bottom: 20px;
 `
 
 const Grid = styled.div`
