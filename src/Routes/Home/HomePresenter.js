@@ -3,6 +3,7 @@ import React from "react";
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Loader from 'Components/Loader';
+import Message from 'Components/Message';
 
 const Container = styled.section`
   padding: 10px;
@@ -13,7 +14,7 @@ class HomePresenter extends React.Component {
 
 
   render() {
-    const {nowPlaying, upcoming, popular, loading} = this.props;
+    const {nowPlaying, upcoming, popular, loading, error} = this.props;
     return (
       loading ? (
         <Loader />
@@ -34,6 +35,7 @@ class HomePresenter extends React.Component {
               {popular.map(item => <div key={item.id}>{item.title}</div>)}
             </Section>
           )}
+          {error && <Message text={error} color="red" />}
         </Container>
       )
     )

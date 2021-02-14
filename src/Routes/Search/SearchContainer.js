@@ -8,7 +8,8 @@ class SearchContainer extends React.Component {
     tvResults: null,
     movieResults: null,
     error: null,
-    loading: false
+    loading: false,
+    pastTerm: '',
   }
 
   updateTerm = (e) => {
@@ -22,6 +23,9 @@ class SearchContainer extends React.Component {
     e.preventDefault();
     const {searchTerm} = this.state;
     if(searchTerm !== '') {
+      this.setState({
+        pastTerm: searchTerm,
+      });
       this.searchByTerm();
     }
   }

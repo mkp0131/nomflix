@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Loader from 'Components/Loader';
 import Section from "Components/Section";
+import Message from "Components/Message";
 
 const Container = styled.section`
   padding: 10px;
@@ -18,7 +19,7 @@ const Input = styled.input`
   width: 100%;
 `
 
-const SearchPresenter = ({tvResults, movieResults, error, loading, handleSubmit, updateTerm}) => {
+const SearchPresenter = ({tvResults, movieResults, error, loading, handleSubmit, updateTerm, pastTerm}) => {
     return (
       <Container>
         <Form onSubmit={handleSubmit}>
@@ -38,6 +39,14 @@ const SearchPresenter = ({tvResults, movieResults, error, loading, handleSubmit,
                 {tvResults.map(item => <div key={item.id}>{item.name}</div>)}
               </Section>
             )}
+            {error && <Message text={error} color="red" />}
+            {
+              movieResults &&
+              tvResults &&
+              movieResults.length === 0 &&
+              tvResults.length === 0 &&
+              <Message text={`Nothing Found: ${pastTerm}`} color="gray" />
+            }
           </>
         )}
       </Container>

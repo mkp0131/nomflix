@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Loader from 'Components/Loader';
 import Section from "Components/Section";
+import Message from "Components/Message";
 
 const Container = styled.section`
   padding: 10px;
@@ -13,7 +14,7 @@ class TVresenter extends React.Component {
 
 
   render() {
-    const {airingToday, popular, topRated, loading} = this.props;
+    const {airingToday, popular, topRated, loading, error} = this.props;
     return (
       loading ? (
         <Loader />
@@ -34,6 +35,7 @@ class TVresenter extends React.Component {
               {popular.map(item => <div key={item.id}>{item.name}</div>)}
             </Section>
           )}
+          {error && <Message text={error} color="red" />}
         </Container>
       )
     )

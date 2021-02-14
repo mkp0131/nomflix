@@ -16,11 +16,6 @@ class HomeContainer extends React.Component {
       const {data: {results: nowPlaying}} = await moviesApi.nowPlaying();
       const {data: {results: upcoming}} = await moviesApi.upcoming();
       const {data: {results: popular}} = await moviesApi.popular();
-console.log('==== movie api ===');
-console.log('nowPlaying', nowPlaying);
-console.log('upComing', upcoming);
-console.log('popular', popular);
-console.log('==== movie api ===');
       this.setState({
         nowPlaying,
         upcoming,
