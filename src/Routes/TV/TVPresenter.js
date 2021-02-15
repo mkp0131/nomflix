@@ -5,6 +5,7 @@ import Loader from 'Components/Loader';
 import Section from "Components/Section";
 import Message from "Components/Message";
 import Poster from "Components/Poster";
+import Helmet from "react-helmet";
 
 const Container = styled.section`
   padding: 10px;
@@ -17,7 +18,11 @@ class TVresenter extends React.Component {
   render() {
     const {airingToday, popular, topRated, loading, error} = this.props;
     return (
-      loading ? (
+      <>
+      <Helmet>
+        <title>TV | Nomfix</title>
+      </Helmet>
+      {loading ? (
         <Loader />
       ) : (
         <Container>
@@ -38,7 +43,8 @@ class TVresenter extends React.Component {
           )}
           {error && <Message text={error} color="red" />}
         </Container>
-      )
+      )}
+      </>
     )
   }
 }

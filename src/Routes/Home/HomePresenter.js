@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Loader from 'Components/Loader';
 import Message from 'Components/Message';
 import Poster from 'Components/Poster';
+import Helmet from 'react-helmet';
 
 const Container = styled.section`
   padding: 10px;
@@ -17,7 +18,11 @@ class HomePresenter extends React.Component {
   render() {
     const {nowPlaying, upcoming, popular, loading, error} = this.props;
     return (
-      loading ? (
+      <>
+      <Helmet>
+        <title>Movies | Nomfix</title>
+      </Helmet>
+      {loading ? (
         <Loader />
       ) : (
         <Container>
@@ -38,7 +43,8 @@ class HomePresenter extends React.Component {
           )}
           {error && <Message text={error} color="red" />}
         </Container>
-      )
+      )}
+      </>
     )
   }
 }

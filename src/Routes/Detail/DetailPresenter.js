@@ -1,7 +1,9 @@
 import Loader from 'Components/Loader';
+import Message from 'Components/Message';
 import React from 'react';
 import styled, {keyframes} from 'styled-components'
 import noPoster from "assets/noPosterSmall.png";
+import Helmet from "react-helmet";
 
 const boxFade = keyframes`
   0% {
@@ -56,7 +58,7 @@ const Contents = styled.div`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns: 30% 70%;
 `
 
 const Left = styled.div`
@@ -110,30 +112,41 @@ const Description = styled.div`
 `
 
 
-const DetailPresenter = ({loading, result, isMovie}) => {
-  console.log('result', result);
-  let image_url = `https://image.tmdb.org/t/p/original${result.poster_path}`;
-	if(!result.poster_path) image_url = noPoster;
+const DetailPresenter = ({loading, result, isMovie, error}) => {
+  let image_url;
+  let year;
+  let title = '';
+  let runtime;
+  let genres;
+  let overview;
+  let bg_img;
 
-  let year = result.first_air_date && result.first_air_date.substring(0, 4);
-  if(isMovie) year = result.release_date && result.release_date.substring(0, 4);
-
-  let title = result.original_name;
-  if(isMovie) title = result.title;
-
-  let runtime = result.runtime && result.runtime + 'm';
-
-  let genres = result.genres && result.genres.map(item => item.name).join(', ');
-
-  let overview = result.overview;
+  if(result) {
+    bg_img = result.backdrop_path && result.backdrop_path;
+    image_url = result.poster_path ? `https://image.tmdb.org/t/p/original${result.poster_path}` : noPoster;
+    year = isMovie ? result.release_date && result.release_date.substring(0, 4) : result.first_air_date && result.first_air_date.substring(0, 4);
+    title = isMovie ? result.title : result.original_name;
+    runtime = result.runtime && result.runtime + 'm';
+    genres = result.genres && result.genres.map(item => item.name).join(', ');
+    overview = result.overview ? result.overview : '';
+  }
 
 	return (
 		<>
 		{loading ? (
-			<Loader />
+      <>
+        <Helmet>
+          <title>Loading... | Nomfix</title>
+        </Helmet>
+        <Loader />
+      </>
 		): (
 			<Container>
-				<BgImg bgImg={result.backdrop_path}></BgImg>
+        {error && <Message text={error} color="red" />}
+        <Helmet>
+          <title>{title} | Nomfix</title>
+        </Helmet>
+				<BgImg bgImg={bg_img}></BgImg>
 				<Contents>
           <Grid>
             <Left>
