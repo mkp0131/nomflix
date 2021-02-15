@@ -4,12 +4,13 @@ import styled from 'styled-components'
 
 
 const Header = styled.header`
-	background: rgba(255, 255, 255, 0.1);
+	background: rgba(0, 0, 0, 0.8);
 	position: fixed;
 	left: 0;
 	top: 0;
 	width: 100%;
 	box-shadow: 0px 1px 5px 2px rgba(0, 0, 0, 0.8);
+	z-index: 100;
 `
 
 const List = styled.ul`

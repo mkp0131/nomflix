@@ -11,7 +11,7 @@ class DetailContainer extends React.Component {
 			}
 		} = props;
 		this.state = {
-			result: null,
+			result: {},
 			error: null,
 			loading: true,
 			isMovie: pathname.includes('/movie/'),

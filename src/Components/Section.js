@@ -10,12 +10,13 @@ const Title = styled.div`
   font-weight: 900;
   font-size: 22px;
   color: red;
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 `
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 2fr 2fr 2fr 2fr;
+	grid-template-columns: repeat(auto-fit, 130px);
+	justify-content: space-between;
   gap: 10px;
 `
 
