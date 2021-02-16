@@ -38,8 +38,6 @@ class SearchContainer extends React.Component {
     try {
       const {data: {results: tvResults}} = await tvApi.search(searchTerm);
 			const {data: {results: movieResults}} = await moviesApi.search(searchTerm);
-			console.log('tvResults', tvResults);
-			console.log('movieResults', movieResults);
       this.setState({
         tvResults,
         movieResults
