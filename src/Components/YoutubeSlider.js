@@ -34,7 +34,7 @@ const fn = ({youtubeList}) => {
 			{youtubeList.map(item => (
 				<SwiperSlide key={item}>
 					<Video href={`https://youtu.be/${item}`} target="_blank">
-						<img src={`https://i.ytimg.com/vi/${item}/mqdefault.jpg`} alt="no Thumnail"/>
+						<img src={`https://i.ytimg.com/vi/${item}/sddefault.jpg`} alt="no Thumnail" />
 						<PlayIcon>
 							<img src={playIcon} alt="Play" />
 						</PlayIcon>

@@ -59,6 +59,7 @@ const Contents = styled.div`
 `
 
 const Grid = styled.div`
+	width: 100%;
   display: grid;
   grid-template-columns: 30% 70%;
 `
