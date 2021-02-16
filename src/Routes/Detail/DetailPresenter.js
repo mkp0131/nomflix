@@ -103,10 +103,10 @@ const Info = styled.div`
     background: #fff;
     transform: translateY(-50%);
   }
-  & > span:last-child {
+  & > div > span:last-child {
     margin-right: 0;
   }
-  & > span:last-child:before {
+  & > div > span:last-child:before {
     display: none;
   } 
 `
