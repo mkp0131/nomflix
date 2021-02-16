@@ -97,9 +97,9 @@ const Info = styled.div`
     content: '';
     position: absolute;
     right: -10px;
-    top: 45%;
+    top: 55%;
     width: 1px;
-    height: 60%;
+    height: 50%;
     background: #fff;
     transform: translateY(-50%);
   }
@@ -202,6 +202,8 @@ const DetailPresenter = ({loading, result, isMovie, error}) => {
 								</div>
 								<div>
 									Language: {language}
+								</div>
+								<div>
 									{result.imdb_id && 
 										(<Imdb href={`https://www.imdb.com/title/${result.imdb_id}`} target="_blank">
 											<img src={imdb} alt="imdb" />
