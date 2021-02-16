@@ -5,7 +5,7 @@ import Loader from 'Components/Loader';
 import Section from "Components/Section";
 import Message from "Components/Message";
 import Poster from "Components/Poster";
-import Helmet from "react-helmet";
+import { Helmet } from 'react-helmet-async';
 
 const Container = styled.section`
   padding: 10px;
@@ -19,9 +19,11 @@ class TVresenter extends React.Component {
     const {airingToday, popular, topRated, loading, error} = this.props;
     return (
       <>
-      <Helmet>
-        <title>TV | Nomfix</title>
-      </Helmet>
+			
+					<Helmet>
+						<title>TV | Nomfix</title>
+					</Helmet>
+			
       {loading ? (
         <Loader />
       ) : (

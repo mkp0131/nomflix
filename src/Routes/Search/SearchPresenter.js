@@ -1,11 +1,11 @@
 import React from "react";
 import styled from 'styled-components';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import Loader from 'Components/Loader';
 import Section from "Components/Section";
 import Message from "Components/Message";
 import Poster from "Components/Poster";
-import Helmet from "react-helmet";
+import { Helmet } from 'react-helmet-async';
 
 const Container = styled.section`
   padding: 10px;
@@ -26,9 +26,12 @@ const Input = styled.input`
 const SearchPresenter = ({tvResults, movieResults, error, loading, handleSubmit, updateTerm, pastTerm}) => {
     return (
       <Container>
-        <Helmet>
-          <title>Search | Nomfix</title>
-        </Helmet>
+			
+
+						<Helmet>
+							<title>Search | Nomfix</title>
+						</Helmet>
+				
         <Form onSubmit={handleSubmit}>
           <Input type="text" placeholder="Search....." onChange={updateTerm}/>
         </Form>

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Loader from 'Components/Loader';
 import Message from 'Components/Message';
 import Poster from 'Components/Poster';
-import Helmet from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 
 const Container = styled.section`
   padding: 10px;
@@ -19,9 +19,11 @@ class HomePresenter extends React.Component {
     const {nowPlaying, upcoming, popular, loading, error} = this.props;
     return (
       <>
-      <Helmet>
-        <title>Movies | Nomfix</title>
-      </Helmet>
+		
+				<Helmet>
+					<title>Movies | Nomfix</title>
+				</Helmet>
+		
       {loading ? (
         <Loader />
       ) : (

@@ -3,7 +3,9 @@ import Message from 'Components/Message';
 import React from 'react';
 import styled, {keyframes} from 'styled-components'
 import noPoster from "assets/noPosterSmall.png";
-import Helmet from "react-helmet";
+import imdb from "assets/imdb.svg";
+import { Helmet } from 'react-helmet-async';
+import YoutubeSlider from 'Components/YoutubeSlider';
 
 const boxFade = keyframes`
   0% {
@@ -85,6 +87,7 @@ const Title = styled.div`
 `
 const Info = styled.div`
   margin-bottom: 40px;
+	line-height: 1.2;
   & > span {
     margin-right: 20px;
     position: relative;
@@ -110,34 +113,66 @@ const Description = styled.div`
   font-size: 18px;
   line-height: 1.4;
 `
-
+const Imdb = styled.a`
+  margin-top: 10px;
+`
+const Production = styled.div`
+  margin-top: 50px;
+  display: flex;
+	flex-wrap: wrap;
+	gap: 50px;
+  place-items: center;
+	text-align: center;
+	filter: grayscale(1);
+	color: #666;
+	font-weight: 700;
+	& > div {
+		width: 140px;
+	}
+	& img {
+		width: 100%;
+	}
+`
+const Youtube = styled.div`
+  margin-top: 40px;
+`
 
 const DetailPresenter = ({loading, result, isMovie, error}) => {
-  let image_url;
-  let year;
+  let image_url = '';
+  let year = '';
   let title = '';
-  let runtime;
-  let genres;
-  let overview;
-  let bg_img;
+  let runtime = '';
+  let genres = '';
+  let overview = '';
+  let bg_img = '';
+  let language = '';
+  let production = '';
+  let youtube_list = '';
 
   if(result) {
     bg_img = result.backdrop_path && result.backdrop_path;
     image_url = result.poster_path ? `https://image.tmdb.org/t/p/original${result.poster_path}` : noPoster;
     year = isMovie ? result.release_date && result.release_date.substring(0, 4) : result.first_air_date && result.first_air_date.substring(0, 4);
     title = isMovie ? result.title : result.original_name;
-    runtime = result.runtime && result.runtime + 'm';
+    runtime = result.runtime && result.runtime + 'min';
     genres = result.genres && result.genres.map(item => item.name).join(', ');
-    overview = result.overview ? result.overview : '';
+    overview = result.overview && result.overview;
+		language = result.spoken_languages && result.spoken_languages[0].english_name;
+		production = result.production_companies && result.production_companies.map((item, index) => {
+			return item.logo_path !== null && <div key={item.id}><img src={`https://image.tmdb.org/t/p/w500${item.logo_path}`} alt={item.name} /></div>;
+		});
+		youtube_list = result.videos && result.videos.results.length && result.videos.results.map(item => item.key);
   }
 
 	return (
 		<>
 		{loading ? (
       <>
-        <Helmet>
-          <title>Loading... | Nomfix</title>
-        </Helmet>
+			
+					<Helmet>
+						<title>Loading... | Nomfix</title>
+					</Helmet>
+				
         <Loader />
       </>
 		): (
@@ -151,17 +186,36 @@ const DetailPresenter = ({loading, result, isMovie, error}) => {
           <Grid>
             <Left>
               <Img>
-                <img src={image_url} />
+                <img src={image_url} alt={title} />
               </Img>
             </Left>
             <Right>
               <Title>{title}</Title>
               <Info>
-                {year && <span>{year}</span>}
-                {runtime && <span>{runtime}</span>}
-                {genres && <span>{genres}</span>}
+								<div>
+									{year && <span>{year}</span>}
+									{runtime && <span>{runtime}</span>}
+									{genres && <span>{genres}</span>}
+								</div>
+								<div>
+									Language: {language}
+									{result.imdb_id && 
+										(<Imdb href={`https://www.imdb.com/title/${result.imdb_id}`} target="_blank">
+											<img src={imdb} alt="imdb" />
+										</Imdb>)
+									}
+								</div>
               </Info>
               <Description>{overview}</Description>
+							{
+								youtube_list.length > 0 &&
+								(<Youtube>
+									<YoutubeSlider youtubeList={youtube_list} />
+								</Youtube>)
+							}
+							<Production>
+								{production}
+							</Production>
             </Right>
           </Grid>
 				</Contents>
