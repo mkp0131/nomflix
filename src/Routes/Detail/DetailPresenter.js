@@ -89,11 +89,11 @@ const Title = styled.div`
 const Info = styled.div`
   margin-bottom: 40px;
 	line-height: 1.2;
-  & > span {
+  & > div > span {
     margin-right: 20px;
     position: relative;
   }
-  & > span:before {
+  & > div > span:before {
     content: '';
     position: absolute;
     right: -10px;
@@ -116,6 +116,7 @@ const Description = styled.div`
 `
 const Imdb = styled.a`
   margin-top: 10px;
+	display: inline-block;
 `
 const Production = styled.div`
   margin-top: 50px;
