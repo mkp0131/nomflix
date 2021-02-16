@@ -124,6 +124,7 @@ const Production = styled.div`
   place-items: center;
 	text-align: center;
 	filter: grayscale(1);
+	opacity: 0.2;
 	color: #666;
 	font-weight: 700;
 	& > div {
